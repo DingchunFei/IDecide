@@ -1,0 +1,10 @@
+com\uom\idecide\user\dao\AdminDao.class
+com\uom\idecide\user\pojo\Admin.class
+com\uom\idecide\user\service\AdminService$1.class
+com\uom\idecide\user\controller\ResearcherController.class
+com\uom\idecide\user\controller\AdminController.class
+com\uom\idecide\user\service\ResearcherService$1.class
+com\uom\idecide\user\service\ResearcherService.class
+com\uom\idecide\user\dao\ResearcherDao.class
+com\uom\idecide\user\service\AdminService.class
+com\uom\idecide\user\pojo\Researcher.class
