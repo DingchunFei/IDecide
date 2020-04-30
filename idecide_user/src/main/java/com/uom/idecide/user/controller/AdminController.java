@@ -50,8 +50,6 @@ public class AdminController {
 			return new Result(false, StatusCode.LOGINERROR,"login fail");
 		}
 		String token = jwtUtil.createJWT(admin.getAdminId(),admin.getEmail(),"admin");
-		//把token打印出来看看
-		System.out.println(token);
 		Map<String,Object> map = new HashMap<>();
 		map.put("token",token);		//把token返回给前端
 		map.put("roles","admin");	//告诉前端role是admin

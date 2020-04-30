@@ -41,12 +41,47 @@ public class UserController {
 
 	/**
 	 * 增加新用户
-	 * @param user
 	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public Result add(@RequestBody User user){
 		userService.add(user);
 		return new Result(true, StatusCode.OK,"增加成功");
+	}
+
+	/**
+	 * 根据ID查询
+	 * 当前user权限
+	 * admin权限
+	 */
+	@RequestMapping(value="/{userId}",method= RequestMethod.GET)
+	public Result findById(@PathVariable(value="userId") String id){
+		return new Result(true, StatusCode.OK,"查询成功",userService.findById(id));
+	}
+
+	/**
+	 * user修改
+	 * 当前user权限
+	 */
+	@RequestMapping(value="/{userId}",method= RequestMethod.PUT)
+	public Result updateById(@RequestBody User user, @PathVariable(value="userId") String id){
+		user.setUserId(id);
+		userService.updateById(user);
+		return new Result(true, StatusCode.OK,"修改成功");
+	}
+
+	/**
+	 * user删除
+	 * admin权限
+	 */
+	@RequestMapping(value="/{userId}",method= RequestMethod.DELETE)
+	public Result deleteById(@PathVariable(value="userId") String id){
+		try{
+			userService.deleteById(id);
+		}catch(Exception e){
+			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
+		}
+
+		return new Result(true, StatusCode.OK,"删除成功");
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -65,58 +100,34 @@ public class UserController {
 		return new Result(true, StatusCode.OK,"login successful",map);
 	}
 
+	/**
+	 * 登出
+	 * user权限
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.PUT)
 	public Result logout(@RequestBody User user){
 		//TODO 登出只需要在前端销毁token即可
 		return new Result(true, StatusCode.OK,"logout successful");
 	}
 
+	/**
+	 * 查询用户列表
+	 * admin权限
+	 */
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
 	public Result userList(){
 		return new Result(true, StatusCode.OK,"operation successful",userService.findAll());
 	}
 
+	/**
+	 * 查询用户列表含分页
+	 * admin权限
+	 */
 	@RequestMapping(value = "/userList/{page}/{size}", method = RequestMethod.GET)
 	public Result userListWithPagination(@PathVariable(value="page") int page,@PathVariable(value="size") int size){
 		Page<User> pages = userService.findAllWithPagination(page, size);
 		//PageResult中第一个是返回记录条数，第二个是对应的userList
 		return new Result(true, StatusCode.OK,"operation successful", new PageResult<User>(pages.getTotalElements(),pages.getContent()));
-	}
-
-	/**
-	 * 根据ID查询
-	 * @param id ID
-	 * @return
-	 */
-	@RequestMapping(value="/{userId}",method= RequestMethod.GET)
-	public Result findById(@PathVariable(value="userId") String id){
-		return new Result(true, StatusCode.OK,"查询成功",userService.findById(id));
-	}
-
-	/**
-	 * 修改
-	 * @param user
-	 */
-	@RequestMapping(value="/{userId}",method= RequestMethod.PUT)
-	public Result updateById(@RequestBody User user, @PathVariable(value="userId") String id){
-		user.setUserId(id);
-		userService.updateById(user);
-		return new Result(true, StatusCode.OK,"修改成功");
-	}
-
-	/**
-	 * 删除
-	 * @param id
-	 */
-	@RequestMapping(value="/{userId}",method= RequestMethod.DELETE)
-	public Result deleteById(@PathVariable(value="userId") String id){
-		try{
-			userService.deleteById(id);
-		}catch(Exception e){
-			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
-		}
-
-		return new Result(true, StatusCode.OK,"删除成功");
 	}
 
 

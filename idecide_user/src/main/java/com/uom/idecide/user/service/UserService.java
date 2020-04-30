@@ -42,6 +42,9 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	@Autowired
+	private HttpServletRequest request;
+
 	/**
 	 * 增加
 	 * @param user
@@ -56,7 +59,7 @@ public class UserService {
 
 	public User login(String email, String password) {
 		User userLogin = userDao.findByEmail(email);
-		//2.然后那数据库中的密码和用户输入的密码匹配是否相同
+		//查看数据库中的密码和用户输入的密码匹配是否相同
 		if(userLogin!=null && encoder.matches(password,userLogin.getPassword())){	//prevent from null pointer
 			//login successful
 			return userLogin;
@@ -66,17 +69,23 @@ public class UserService {
 
 	/**
 	 * 查询全部列表
-	 * @return
+	 * admin权限
 	 */
 	public List<User> findAll() {
+		checkAdmin();	//鉴权是否为admin用户
+		String token = (String)request.getAttribute("claims_admin");
+		if(token==null || "".equals(token)){
+			throw new RuntimeException("无法删除该用户，权限不足！");
+		}
 		return userDao.findAll();
 	}
 
 	/**
 	 * 查询全部列表
-	 * @return
+	 * admin权限
 	 */
 	public Page<User> findAllWithPagination(int page, int size) {
+		checkAdmin();	//鉴权是否为admin用户
 		//DB从0开始，页面从1开始
 		Pageable pageable = PageRequest.of(page-1,size);
 		return userDao.findAll(pageable);
@@ -85,34 +94,30 @@ public class UserService {
 
 	/**
 	 * 根据ID查询实体
-	 * @param id
-	 * @return
+	 * admin权限
+	 * 当前用户权限
 	 */
 	public User findById(String id) {
+		checkAdmin();	//鉴权是否为admin用户
+		checkUser(id);	//鉴权是否操作的是当前用户
 		return userDao.findById(id).get();
 	}
 
 	/**
 	 * 修改
-	 * @param user
+	 * @当前用户权限
 	 */
 	public void updateById(User user) {
+		checkUser(user.getUserId());	//鉴权是否操作的是当前用户
 		userDao.save(user);
 	}
 
-	@Autowired
-	private HttpServletRequest request;
 	/**
 	 * 删除：必须admin角色才能删除
 	 * @param id
 	 */
 	public void deleteById(String id) {
-		//把token从header中取出
-		String token = (String)request.getAttribute("claims_admin");
-		if(token==null || "".equals(token)){
-			throw new RuntimeException("无法删除该用户，权限不足！");
-		}
-		//只有通过上面的层层判断全部通过后，才能删除用户
+		checkAdmin();
 		userDao.deleteById(id);
 	}
 
@@ -163,6 +168,32 @@ public class UserService {
 		};
 
 	}
+
+	private boolean checkAdmin(){
+		String token = (String)request.getAttribute("claims_admin");
+		if(token==null || "".equals(token)){
+			throw new RuntimeException("权限不足！");
+		}
+		return true;
+	}
+
+	private boolean checkResearcher(){
+		String token = (String)request.getAttribute("claims_researcher");
+		if(token==null || "".equals(token)){
+			throw new RuntimeException("权限不足！");
+		}
+		return true;
+	}
+
+	private boolean checkUser(String userId){
+		String token = (String)request.getAttribute("claims_user");
+		String jwt_id = (String)request.getAttribute("id");
+		if(userId == null || jwt_id.equals(userId) || token==null || "".equals(token)){
+			throw new RuntimeException("权限不足！");
+		}
+		return true;
+	}
+
 
 
 }

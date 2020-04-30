@@ -37,15 +37,19 @@ public class JwtInterceptor implements HandlerInterceptor {
                     Claims claims = jwtUtil.parseJWT(token);
                     //尝试从令牌中获取当前用户的角色
                     String roles = (String) claims.get("roles");
-                    if(roles != null && roles.equals("admin")){
+                    String id = claims.getId();
+                    if(id!=null && roles != null && roles.equals("admin")){
                         //如果发现可以解析token，就把token放到request中，方便后面代码提取
                         request.setAttribute("claims_admin",token);
-                    }else if(roles != null && roles.equals("user")){
+                        request.setAttribute("id",id);
+                    }else if(id!=null && roles != null && roles.equals("user")){
                         //这个是普通用户的token标识
                         request.setAttribute("claims_user",token);
-                    }else if(roles != null && roles.equals("researcher")){
+                        request.setAttribute("id",id);
+                    }else if(id!=null && roles != null && roles.equals("researcher")){
                         //这个是普通用户的token标识
                         request.setAttribute("claims_researcher",token);
+                        request.setAttribute("id",id);
                     }
                 }catch (Exception e){
                     //抛出异常说明 超时！ 因此还是显示权限不足
