@@ -25,6 +25,7 @@ public class User implements Serializable{
 	private String phoneNumber;
 	private String postcode;
 	private Integer progress;
+	private Integer partId;//当前做到的part
 	private Integer state;
 
 	@Override
@@ -39,8 +40,17 @@ public class User implements Serializable{
 				", phoneNumber='" + phoneNumber + '\'' +
 				", postcode='" + postcode + '\'' +
 				", progress=" + progress +
+				", partId=" + partId +
 				", state=" + state +
 				'}';
+	}
+
+	public Integer getPartId() {
+		return partId;
+	}
+
+	public void setPartId(Integer partId) {
+		this.partId = partId;
 	}
 
 	public String getUserId() {
