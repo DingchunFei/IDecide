@@ -188,7 +188,7 @@ public class UserService {
 	private boolean checkUser(String userId){
 		String token = (String)request.getAttribute("claims_user");
 		String jwt_id = (String)request.getAttribute("id");
-		if(userId == null || jwt_id.equals(userId) || token==null || "".equals(token)){
+		if(userId == null || !jwt_id.equals(userId) || token==null || "".equals(token)){
 			throw new RuntimeException("权限不足！");
 		}
 		return true;

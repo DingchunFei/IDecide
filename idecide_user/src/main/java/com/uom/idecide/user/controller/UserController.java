@@ -55,7 +55,13 @@ public class UserController {
 	 */
 	@RequestMapping(value="/{userId}",method= RequestMethod.GET)
 	public Result findById(@PathVariable(value="userId") String id){
-		return new Result(true, StatusCode.OK,"查询成功",userService.findById(id));
+		User user;
+		try{
+			user = userService.findById(id);
+		}catch(Exception e){
+			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
+		}
+		return new Result(true, StatusCode.OK,"查询成功",user);
 	}
 
 	/**
@@ -64,8 +70,11 @@ public class UserController {
 	 */
 	@RequestMapping(value="/{userId}",method= RequestMethod.PUT)
 	public Result updateById(@RequestBody User user, @PathVariable(value="userId") String id){
-		user.setUserId(id);
-		userService.updateById(user);
+		try{
+			userService.updateById(user);
+		}catch(Exception e){
+			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
+		}
 		return new Result(true, StatusCode.OK,"修改成功");
 	}
 
@@ -80,7 +89,6 @@ public class UserController {
 		}catch(Exception e){
 			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
 		}
-
 		return new Result(true, StatusCode.OK,"删除成功");
 	}
 
@@ -116,7 +124,13 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
 	public Result userList(){
-		return new Result(true, StatusCode.OK,"operation successful",userService.findAll());
+		List<User> userList;
+		try{
+			userList = userService.findAll();
+		}catch(Exception e){
+			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
+		}
+		return new Result(true, StatusCode.OK,"operation successful",userList);
 	}
 
 	/**
@@ -125,7 +139,12 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/userList/{page}/{size}", method = RequestMethod.GET)
 	public Result userListWithPagination(@PathVariable(value="page") int page,@PathVariable(value="size") int size){
-		Page<User> pages = userService.findAllWithPagination(page, size);
+		Page<User> pages;
+		try{
+			pages = userService.findAllWithPagination(page, size);
+		}catch(Exception e){
+			return new Result(false,StatusCode.ACCESSERROR,"权限不足");
+		}
 		//PageResult中第一个是返回记录条数，第二个是对应的userList
 		return new Result(true, StatusCode.OK,"operation successful", new PageResult<User>(pages.getTotalElements(),pages.getContent()));
 	}
