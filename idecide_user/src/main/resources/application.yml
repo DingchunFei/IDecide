@@ -5,7 +5,7 @@ spring:
     name: idecide-user #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.187.133:3306/idecide_user?useUnicode=true&amp;characterEncoding=UTF8
+    url: jdbc:mysql://192.168.187.134:3306/idecide_user?useUnicode=true&amp;characterEncoding=UTF8
     username: root
     password: 123456
   jpa: 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="idecide_common" />
+        <module name="idecide_user" />
+        <module name="idecide_eureka" />
+        <module name="idecide_module" />
+        <module name="idecide_result" />
+        <module name="idecide_base" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="idecide" target="1.8" />
+      <module name="idecide_base" target="1.8" />
+      <module name="idecide_common" target="1.8" />
+      <module name="idecide_eureka" target="1.8" />
+      <module name="idecide_module" target="1.8" />
+      <module name="idecide_result" target="1.8" />
+      <module name="idecide_user" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="idecide_base" options="-parameters" />
+      <module name="idecide_common" options="-parameters" />
+      <module name="idecide_eureka" options="-parameters" />
+      <module name="idecide_module" options="-parameters" />
+      <module name="idecide_result" options="-parameters" />
+      <module name="idecide_user" options="-parameters" />
+    </option>
+  </component>
+</project>

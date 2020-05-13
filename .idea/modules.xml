@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/idecide.iml" filepath="$PROJECT_DIR$/idecide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idecide_base/idecide_base.iml" filepath="$PROJECT_DIR$/idecide_base/idecide_base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idecide_common/idecide_common.iml" filepath="$PROJECT_DIR$/idecide_common/idecide_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idecide_eureka/idecide_eureka.iml" filepath="$PROJECT_DIR$/idecide_eureka/idecide_eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idecide_module/idecide_module.iml" filepath="$PROJECT_DIR$/idecide_module/idecide_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idecide_result/idecide_result.iml" filepath="$PROJECT_DIR$/idecide_result/idecide_result.iml" />
+      <module fileurl="file://$PROJECT_DIR$/idecide_user/idecide_user.iml" filepath="$PROJECT_DIR$/idecide_user/idecide_user.iml" />
+    </modules>
+  </component>
+</project>
