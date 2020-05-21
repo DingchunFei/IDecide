@@ -1,2 +1,2 @@
-com\uom\idecide\base\BaseApplication.class
-com\uom\idecide\base\controller\BaseExceptionHandler.class
+com\uom\idecide\result\base\controller\BaseExceptionHandler.class
+com\uom\idecide\result\base\BaseApplication.class

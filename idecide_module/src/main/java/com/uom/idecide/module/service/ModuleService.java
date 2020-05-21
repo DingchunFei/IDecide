@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import util.IdWorker;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ModuleService {
@@ -23,6 +23,7 @@ public class ModuleService {
         module.setModuleId(idWorker.nextId()+"");
         module.setActive(true);
         List<Part> parts = module.getParts();
+
         for(Part part: parts){
             //为每个module里的part赋值id
             part.setPartId(idWorker.nextId()+"");

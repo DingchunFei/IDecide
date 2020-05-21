@@ -26,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="idecide" options="-parameters" />
       <module name="idecide_base" options="-parameters" />
       <module name="idecide_common" options="-parameters" />
       <module name="idecide_eureka" options="-parameters" />
