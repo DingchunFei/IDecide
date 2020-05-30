@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-<!--    <packaging>jar</packaging>-->
+    <packaging>jar</packaging>
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -65,9 +65,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <fork>true</fork>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>

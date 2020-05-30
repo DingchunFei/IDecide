@@ -12,7 +12,7 @@
         <module>idecide_base</module>
         <module>idecide_common</module>
         <module>idecide_eureka</module>
-        <module>idecide_module</module>
+        <module>idecide_survey</module>
         <module>idecide_result</module>
     </modules>
     <packaging>pom</packaging>

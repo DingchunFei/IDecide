@@ -9,9 +9,9 @@
         <module name="idecide_common" />
         <module name="idecide_user" />
         <module name="idecide_eureka" />
-        <module name="idecide_module" />
         <module name="idecide_result" />
         <module name="idecide_base" />
+        <module name="idecide_survey" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,8 +19,8 @@
       <module name="idecide_base" target="1.8" />
       <module name="idecide_common" target="1.8" />
       <module name="idecide_eureka" target="1.8" />
-      <module name="idecide_module" target="1.8" />
       <module name="idecide_result" target="1.8" />
+      <module name="idecide_survey" target="1.8" />
       <module name="idecide_user" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -30,8 +30,8 @@
       <module name="idecide_base" options="-parameters" />
       <module name="idecide_common" options="-parameters" />
       <module name="idecide_eureka" options="-parameters" />
-      <module name="idecide_module" options="-parameters" />
       <module name="idecide_result" options="-parameters" />
+      <module name="idecide_survey" options="-parameters" />
       <module name="idecide_user" options="-parameters" />
     </option>
   </component>
