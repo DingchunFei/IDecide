@@ -1,0 +1,6 @@
+com\uom\idecide\result\AnswerApplication.class
+com\uom\idecide\result\pojo\Answer.class
+com\uom\idecide\result\controller\AnswerController.class
+com\uom\idecide\result\pojo\Question.class
+com\uom\idecide\result\dao\AnswerDao.class
+com\uom\idecide\result\service\AnswerService.class
