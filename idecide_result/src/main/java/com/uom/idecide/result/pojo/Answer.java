@@ -10,16 +10,33 @@ public class Answer implements Serializable {
     private String sectionId;
     private String completedTime;
     private List<Question> questions;
+    private String resultCalculation;
 
-    @Override
-    public String toString() {
-        return "Answer{" +
-                "userId='" + userId + '\'' +
-                ", surveyId='" + surveyId + '\'' +
-                ", sectionId='" + sectionId + '\'' +
-                ", completedTimd='" + completedTime + '\'' +
-                ", questions=" + questions +
-                '}';
+    public Answer() {}
+
+    public Answer(String userId, String surveyId, String sectionId, String completedTime, List<Question> questions, String resultCalculation) {
+        this.userId = userId;
+        this.surveyId = surveyId;
+        this.sectionId = sectionId;
+        this.completedTime = completedTime;
+        this.questions = questions;
+        this.resultCalculation = resultCalculation;
+    }
+
+    public String getResultCalculation() {
+        return resultCalculation;
+    }
+
+    public void setResultCalculation(String resultCalculation) {
+        this.resultCalculation = resultCalculation;
+    }
+
+    public String getCompletedTime() {
+        return completedTime;
+    }
+
+    public void setCompletedTime(String completedTime) {
+        this.completedTime = completedTime;
     }
 
     public String getUserId() {
@@ -44,14 +61,6 @@ public class Answer implements Serializable {
 
     public void setSectionId(String sectionId) {
         this.sectionId = sectionId;
-    }
-
-    public String getCompletedTimd() {
-        return completedTime;
-    }
-
-    public void setCompletedTimd(String completedTimd) {
-        this.completedTime = completedTimd;
     }
 
     public List<Question> getQuestions() {

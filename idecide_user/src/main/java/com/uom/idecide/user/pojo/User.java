@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * 实体类
@@ -132,4 +133,5 @@ public class User implements Serializable{
 	public void setState(Integer state) {
 		this.state = state;
 	}
+
 }

@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @author Administrator
  *
  */
-public interface AdminDao extends JpaRepository<Admin,String>,JpaSpecificationExecutor<Admin>{
+public interface `AdminDao extends JpaRepository<Admin,String>,JpaSpecificationExecutor<Admin>{
     public Admin findByEmail(String email);
 }

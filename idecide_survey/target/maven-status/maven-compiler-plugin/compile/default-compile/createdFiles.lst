@@ -1,3 +1,4 @@
+com\uom\idecide\module\pojo\ActionPlan.class
 com\uom\idecide\module\pojo\Survey.class
 com\uom\idecide\module\controller\SurveyController.class
 com\uom\idecide\module\dao\SurveyDao.class

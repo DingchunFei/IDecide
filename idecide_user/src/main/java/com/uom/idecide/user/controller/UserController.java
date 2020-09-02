@@ -63,7 +63,8 @@ public class UserController {
 	 * Require: current user permission
 	 */
 	@RequestMapping(value="/{userId}",method= RequestMethod.PUT)
-	public Result updateById(@RequestBody User user, @PathVariable(value="userId") String id){
+	public Result updateById(@RequestBody User user,
+							 @PathVariable(value="userId") String id){
 		try{
 			userService.updateById(user);
 		}catch(Exception e){
@@ -132,7 +133,8 @@ public class UserController {
 	 * admin权限
 	 */
 	@RequestMapping(value = "/userList/{page}/{size}", method = RequestMethod.GET)
-	public Result userListWithPagination(@PathVariable(value="page") int page,@PathVariable(value="size") int size){
+	public Result userListWithPagination(@PathVariable(value="page") int page,
+										 @PathVariable(value="size") int size){
 		Page<User> pages;
 		try{
 			pages = userService.findAllWithPagination(page, size);

@@ -4,12 +4,13 @@ import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
-public class Survey  implements Serializable {
+public class Survey implements Serializable {
     @Id
     private String surveyId;
     private String surveyTitle;
     private String surveyVersion;
     private String surveyIntroduction;
+    private String surveyImageName;
 
     //all of the JSON string in request will be stored in jsonStr
     private String jsonStr;
@@ -18,11 +19,12 @@ public class Survey  implements Serializable {
     public Survey() {
     }
 
-    public Survey(String surveyId, String surveyTitle, String surveyVersion, String surveyIntroduction, String jsonStr) {
+    public Survey(String surveyId, String surveyTitle, String surveyVersion, String surveyIntroduction, String surveyImageName, String jsonStr) {
         this.surveyId = surveyId;
         this.surveyTitle = surveyTitle;
         this.surveyVersion = surveyVersion;
         this.surveyIntroduction = surveyIntroduction;
+        this.surveyImageName = surveyImageName;
         this.jsonStr = jsonStr;
     }
 
@@ -33,8 +35,17 @@ public class Survey  implements Serializable {
                 ", surveyTitle='" + surveyTitle + '\'' +
                 ", surveyVersion='" + surveyVersion + '\'' +
                 ", surveyIntroduction='" + surveyIntroduction + '\'' +
+                ", surveyImageName='" + surveyImageName + '\'' +
                 ", jsonStr='" + jsonStr + '\'' +
                 '}';
+    }
+
+    public String getSurveyImageName() {
+        return surveyImageName;
+    }
+
+    public void setSurveyImageName(String surveyImageName) {
+        this.surveyImageName = surveyImageName;
     }
 
     public String getSurveyVersion() {
@@ -76,4 +87,5 @@ public class Survey  implements Serializable {
     public void setJsonStr(String jsonStr) {
         this.jsonStr = jsonStr;
     }
+
 }

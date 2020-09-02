@@ -16,8 +16,16 @@ public class Question implements Serializable {
                 "questionId='" + questionId + '\'' +
                 ", questionType='" + questionType + '\'' +
                 ", questionText='" + questionText + '\'' +
-                ", questionAnwer=" + questionAnswer +
+                ", questionAnswer=" + questionAnswer +
                 '}';
+    }
+
+    public List<String> getQuestionAnswer() {
+        return questionAnswer;
+    }
+
+    public void setQuestionAnswer(List<String> questionAnswer) {
+        this.questionAnswer = questionAnswer;
     }
 
     public String getQuestionId() {
@@ -44,11 +52,4 @@ public class Question implements Serializable {
         this.questionText = questionText;
     }
 
-    public List<String> getQuestionAnwer() {
-        return questionAnswer;
-    }
-
-    public void setQuestionAnwer(List<String> questionAnwer) {
-        this.questionAnswer = questionAnwer;
-    }
 }

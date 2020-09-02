@@ -12,6 +12,13 @@
     <artifactId>idecide_result</artifactId>
 
     <dependencies>
+
+        <!--Feign的依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!--eureka服务注册发现-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -41,6 +48,7 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+
     </dependencies>
 
 

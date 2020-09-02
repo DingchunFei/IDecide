@@ -67,7 +67,8 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/adminList/{page}/{size}", method = RequestMethod.GET)
-	public Result adminListWithPagination(@PathVariable(value="page") int page,@PathVariable(value="size") int size){
+	public Result adminListWithPagination(@PathVariable(value="page") int page,
+										  @PathVariable(value="size") int size){
 		Page<Admin> pages = adminService.findAllWithPagination(page, size);
 		//PageResult中第一个是返回记录条数，第二个是对应的adminList
 		return new Result(true, StatusCode.OK,"operation successful", new PageResult<Admin>(page,pages.getTotalElements(),pages.getTotalPages(),pages.getContent()));

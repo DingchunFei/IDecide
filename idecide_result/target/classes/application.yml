@@ -13,13 +13,15 @@ spring:
 #    show-sql: true
   data:
     mongodb:
-      #host: 192.168.187.134
+      #host: 8.210.28.169
       host: 127.0.0.1
       database: resultdb
+      port: 27010
 
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:6868/eureka #服务发现的地址
+      #defaultZone: http://8.210.28.169:6868/eureka #服务发现的地址
   instance:
     prefer-ip-address: true   #写上这个之后，不同模块之间可以跨域访问！
