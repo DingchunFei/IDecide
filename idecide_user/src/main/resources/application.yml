@@ -22,7 +22,6 @@ jwt:
     key: UniversityOfMelbourne   #盐
     ttl: 360000   #过期时间这里是一小时
 
-
 eureka:
   client:
     service-url:
